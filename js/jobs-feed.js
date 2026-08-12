@@ -147,14 +147,14 @@ class JobFeedManager {
             <h3 class="job-title">${this.escapeHTML(job.job_title || 'Position Open')}</h3>
             <div class="job-company"><i class="fa fa-building-o"></i> ${this.escapeHTML(job.company || 'GIndiaHR Partner Client')}</div>
             
-            <div class="job-meta-list">
-              <span><i class="fa fa-map-marker"></i> ${this.escapeHTML(job.location || 'Pan India')}</span>
-              <span><i class="fa fa-briefcase"></i> ${this.escapeHTML(job.experience || 'Freshers / Experienced')}</span>
+            <div class="job-meta-list" style="margin-bottom: 14px;">
+              <span style="margin-right: 12px;"><i class="fa fa-map-marker"></i> ${this.escapeHTML(job.location || 'Pan India')}</span>
+              <span style="margin-right: 12px;"><i class="fa fa-briefcase"></i> ${this.escapeHTML(job.experience || 'Freshers / Experienced')}</span>
               <span><i class="fa fa-inr"></i> ${this.escapeHTML(job.salary || 'Best in Industry')}</span>
             </div>
 
-            <div class="job-skills-tags">
-              ${skillsArray.map(skill => `<span class="skill-tag">${this.escapeHTML(skill)}</span>`).join('')}
+            <div class="job-skills-tags" style="margin-bottom: 18px; display: flex; flex-wrap: wrap; gap: 8px;">
+              ${skillsArray.map(skill => `<span class="skill-tag" style="display: inline-block; background: #e0f2fe; color: #0369a1; font-size: 12px; padding: 4px 10px; border-radius: 12px; margin-right: 6px; margin-bottom: 6px;">${this.escapeHTML(skill)}</span>`).join('')}
             </div>
 
             <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
