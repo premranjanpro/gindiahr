@@ -1,5 +1,4 @@
 User-agent: *
-Disallow: /register.html
-Disallow: /login.html
-Disallow: /board-search.html
+Allow: /
+
 Sitemap: https://www.gindiahr.com/sitemap.xml
