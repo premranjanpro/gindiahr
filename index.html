@@ -1217,106 +1217,230 @@
             .footer-content-grid {
                 grid-template-columns: 1fr 1fr;
             }
-        /* ─── 3 CITY HUBS SECTION ─── */
+        /* ─── 3 CITY HUBS SECTION (PREMIUM MODERN REDESIGN) ─── */
         .city-hubs-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            margin-top: 36px;
+            gap: 28px;
+            margin-top: 40px;
         }
         .city-hub-card {
             background: #FFFFFF;
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--border-subtle);
-            padding: 32px 28px;
-            box-shadow: var(--shadow-card);
-            transition: all 0.3s ease;
+            border-radius: 20px;
+            border: 1.5px solid #E2E8F0;
+            padding: 32px 26px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             display: flex;
             flex-direction: column;
+            overflow: hidden;
+        }
+        .city-hub-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--hub-accent, #1E40AF);
+            transition: height 0.3s ease;
         }
         .city-hub-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-            border-color: var(--royal-blue);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
+            border-color: var(--hub-accent, #1E40AF);
+        }
+        .city-hub-card:hover::before {
+            height: 7px;
+        }
+        .city-hub-card.hub-patna {
+            --hub-accent: linear-gradient(90deg, #1D4ED8, #3B82F6);
+        }
+        .city-hub-card.hub-delhi {
+            --hub-accent: linear-gradient(90deg, #D97706, #F59E0B);
+        }
+        .city-hub-card.hub-faridabad {
+            --hub-accent: linear-gradient(90deg, #059669, #10B981);
+        }
+        .city-hub-topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+            gap: 8px;
         }
         .city-hub-badge {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 4px 12px;
-            border-radius: var(--radius-full);
-            font-size: 12px;
-            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 999px;
+            font-size: 11.5px;
+            font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 16px;
-            width: fit-content;
         }
         .badge-patna {
             background: #EFF6FF;
-            color: var(--royal-blue);
+            color: #1D4ED8;
+            border: 1px solid #BFDBFE;
         }
         .badge-delhi {
-            background: #FFF4E6;
-            color: var(--warm-accent);
+            background: #FFFBEB;
+            color: #B45309;
+            border: 1px solid #FDE68A;
         }
         .badge-faridabad {
             background: #ECFDF5;
-            color: var(--emerald);
+            color: #047857;
+            border: 1px solid #A7F3D0;
+        }
+        .city-status-pulse {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #10B981;
+            background: rgba(16, 185, 129, 0.08);
+            padding: 4px 8px;
+            border-radius: 6px;
+        }
+        .city-status-pulse::before {
+            content: '';
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #10B981;
+            box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3);
+            animation: hubPulse 2s infinite;
+        }
+        @keyframes hubPulse {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
+            70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
         }
         .city-hub-title {
             font-family: 'Outfit', sans-serif;
             font-size: 22px;
             font-weight: 800;
-            color: var(--text-title);
-            margin-bottom: 8px;
+            color: #0F172A;
+            margin-bottom: 6px;
+            line-height: 1.3;
         }
         .city-hub-subtitle {
             font-size: 13.5px;
-            color: var(--text-muted);
+            color: #64748B;
             margin-bottom: 16px;
             line-height: 1.5;
+            min-height: 40px;
+        }
+        .city-tags-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 18px;
+        }
+        .city-tag {
+            font-size: 11px;
+            font-weight: 700;
+            background: #F1F5F9;
+            color: #334155;
+            padding: 4px 9px;
+            border-radius: 6px;
+            border: 1px solid #E2E8F0;
         }
         .city-hub-address {
-            background: var(--bg-canvas);
-            border-radius: var(--radius-md);
-            padding: 14px;
-            font-size: 13.5px;
-            color: var(--text-body);
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 12px 14px;
+            font-size: 13px;
+            color: #334155;
             display: flex;
             align-items: flex-start;
             gap: 10px;
             margin-bottom: 18px;
         }
+        .city-hub-address svg {
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
         .city-hub-features {
             list-style: none;
             margin-bottom: 24px;
             flex-grow: 1;
+            padding: 0;
         }
         .city-hub-features li {
             font-size: 13px;
-            color: var(--text-body);
-            margin-bottom: 8px;
+            color: #334155;
+            margin-bottom: 10px;
             display: flex;
-            align-items: center;
-            gap: 8px;
+            align-items: flex-start;
+            gap: 10px;
+            line-height: 1.45;
         }
-        .city-hub-features svg {
-            color: var(--emerald);
+        .city-hub-features li svg {
+            color: #10B981;
+            margin-top: 3px;
             flex-shrink: 0;
+        }
+        .city-hub-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: auto;
         }
         .city-hub-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            padding: 10px 18px;
-            border-radius: var(--radius-md);
-            font-size: 14px;
+            padding: 12px 18px;
+            border-radius: 10px;
+            font-size: 13.5px;
             font-weight: 700;
             text-decoration: none;
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
+            color: #FFFFFF;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .city-hub-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+            color: #FFFFFF;
+        }
+        .btn-hub-patna {
+            background: linear-gradient(135deg, #1D4ED8, #1E40AF);
+        }
+        .btn-hub-delhi {
+            background: linear-gradient(135deg, #0F172A, #1E293B);
+            border: 1px solid #334155;
+        }
+        .btn-hub-faridabad {
+            background: linear-gradient(135deg, #047857, #065F46);
+        }
+        .city-hub-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #25D366;
+            text-decoration: none;
+            padding: 6px 10px;
+            border-radius: 8px;
+            background: rgba(37, 211, 102, 0.08);
+            border: 1px solid rgba(37, 211, 102, 0.2);
+            transition: all 0.2s;
+        }
+        .city-hub-secondary:hover {
+            background: rgba(37, 211, 102, 0.16);
+            color: #128C7E;
         }
 
         /* ─── WASHEXPRESS HIGHLIGHT SECTION ─── */
@@ -1589,14 +1713,16 @@
                     <span class="radar-header-badge">● 3 Hubs Active</span>
                 </div>
                 
-                <!-- Founder Spotlight Mini Banner -->
+                <!-- Founder Spotlight Mini Banner (No photo on home page - photo exclusively on about.html) -->
                 <div style="display:flex; align-items:center; gap:16px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); border-radius:14px; padding:14px; margin-bottom:16px;">
-                    <img src="images/usha-singh.jpeg" alt="Usha Singh Founder GIndiaHR" style="width:64px; height:64px; border-radius:50%; object-fit:cover; border:2px solid #F59E0B; box-shadow:0 4px 12px rgba(0,0,0,0.3); flex-shrink:0;">
+                    <div style="width:56px; height:56px; border-radius:14px; background:linear-gradient(135deg, #F59E0B, #D97706); display:flex; align-items:center; justify-content:center; color:#FFFFFF; font-family:'Outfit',sans-serif; font-size:22px; font-weight:900; box-shadow:0 4px 14px rgba(245,158,11,0.35); flex-shrink:0; border:2px solid rgba(255,255,255,0.3);">
+                        US
+                    </div>
                     <div>
                         <div style="font-family:'Outfit',sans-serif; font-size:16px; font-weight:800; color:#FFFFFF; line-height:1.2;">Usha Singh</div>
                         <div style="font-size:12px; color:#38BDF8; font-weight:600; margin-bottom:4px;">Founder & Managing Director</div>
                         <a href="about.html" style="font-size:12px; color:#F59E0B; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
-                            Read Executive Bio & Story &rarr;
+                            View Executive Profile & Photo on About Page &rarr;
                         </a>
                     </div>
                 </div>
@@ -1769,60 +1895,150 @@
 
             <div class="city-hubs-grid">
                 <!-- Hub 1: Patna -->
-                <div class="city-hub-card" style="border-top:4px solid var(--royal-blue); position:relative;">
-                    <span class="city-hub-badge badge-patna" style="background:#E0F2FE; color:#0369A1; font-weight:800;">📍 Flagship Headquarters</span>
-                    <h3 class="city-hub-title" style="font-family:'Outfit',sans-serif; font-size:22px; margin-top:8px;">Kankarbagh, Patna (Bihar)</h3>
-                    <p class="city-hub-subtitle">Bihar Central Operations, Statewide Manpower Deployment, Washxpress HQ & Media PR</p>
-                    <div class="city-hub-address" style="background:#F8FAFC; padding:10px 14px; border-radius:8px; margin-bottom:14px;">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="color:var(--royal-blue);flex-shrink:0;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                        <span><strong>Kankarbagh Main Road</strong>, Patna, Bihar — 800020</span>
+                <div class="city-hub-card hub-patna">
+                    <div class="city-hub-topbar">
+                        <span class="city-hub-badge badge-patna">📍 Flagship HQ & East Command</span>
+                        <span class="city-status-pulse">Active Regional HQ</span>
                     </div>
+                    <h3 class="city-hub-title">Kankarbagh, Patna (Bihar)</h3>
+                    <p class="city-hub-subtitle">Bihar Central Operations, Statewide Manpower Deployment, Washxpress Franchise HQ & Media PR</p>
+                    
+                    <div class="city-tags-strip">
+                        <span class="city-tag">2 Lakh+ Talent Pool</span>
+                        <span class="city-tag">Washxpress Store Setup</span>
+                        <span class="city-tag">PR Advisory</span>
+                    </div>
+
+                    <div class="city-hub-address">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#1D4ED8"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        <div>
+                            <strong>Kankarbagh Main Road</strong><br>
+                            Patna, Bihar — 800020
+                        </div>
+                    </div>
+
                     <ul class="city-hub-features">
-                        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> 2 Lakh+ Verified Bihar Talent Pool</li>
-                        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Washxpress Turnkey Franchise Setup & Training Desk</li>
-                        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Regional PR, Media Outreach & Growth Advisory</li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                            <span><strong>2 Lakh+ Verified Bihar Talent Pool</strong> across all 38 districts with 48-hr recruitment turnaround.</span>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                            <span><strong>Washxpress Turnkey Franchise Hub</strong>: Architectural layout, LG machinery, and live staff training.</span>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                            <span><strong>Regional Media & PR Relations</strong>: Dainik Jagran, Prabhat Khabar & digital brand defense.</span>
+                        </li>
                     </ul>
-                    <a href="tel:+916202254762" class="city-hub-btn btn-royal">
-                        Connect Patna HQ (+91 6202254762) &rarr;
-                    </a>
+
+                    <div class="city-hub-actions">
+                        <a href="tel:+916202254762" class="city-hub-btn btn-hub-patna">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                            Call Patna HQ (+91 6202254762) &rarr;
+                        </a>
+                        <a href="https://wa.me/916202254762?text=Hello%20Patna%20HQ,%20I%20want%20to%20consult%20regarding%20HR%20Services%20or%20Washxpress%20Franchise." target="_blank" class="city-hub-secondary">
+                            💬 WhatsApp Patna Command Desk
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Hub 2: New Delhi -->
-                <div class="city-hub-card" style="border-top:4px solid #F59E0B; position:relative;">
-                    <span class="city-hub-badge badge-delhi" style="background:#FEF3C7; color:#B45309; font-weight:800;">🏛️ Corporate & CXO Hub</span>
-                    <h3 class="city-hub-title" style="font-family:'Outfit',sans-serif; font-size:22px; margin-top:8px;">Malviya Nagar, New Delhi</h3>
-                    <p class="city-hub-subtitle">National CXO Executive Search, Tech Talent Headhunting & Enterprise AI Consulting</p>
-                    <div class="city-hub-address" style="background:#F8FAFC; padding:10px 14px; border-radius:8px; margin-bottom:14px;">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="color:var(--warm-accent);flex-shrink:0;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                        <span><strong>Malviya Nagar</strong>, South Delhi, New Delhi — 110017</span>
+                <div class="city-hub-card hub-delhi">
+                    <div class="city-hub-topbar">
+                        <span class="city-hub-badge badge-delhi">🏛️ Corporate & CXO Executive Desk</span>
+                        <span class="city-status-pulse">Active Delhi Desk</span>
                     </div>
+                    <h3 class="city-hub-title">Malviya Nagar, New Delhi</h3>
+                    <p class="city-hub-subtitle">National CXO Executive Search, Tech Talent Headhunting & Enterprise AI Consulting</p>
+                    
+                    <div class="city-tags-strip">
+                        <span class="city-tag">CXO & Leadership Search</span>
+                        <span class="city-tag">300+ Enterprise Clients</span>
+                        <span class="city-tag">Tech Consulting</span>
+                    </div>
+
+                    <div class="city-hub-address">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#D97706"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        <div>
+                            <strong>Malviya Nagar Main Commercial</strong><br>
+                            South Delhi, New Delhi — 110017
+                        </div>
+                    </div>
+
                     <ul class="city-hub-features">
-                        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> C-Suite, VP, Director & CXO Executive Placements</li>
-                        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> National Media PR, Dainik Jagran/TOI Publishing</li>
-                        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> GIndia Tech Enterprise Software Architecture</li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                            <span><strong>C-Suite, VP, Director & CXO Executive Placements</strong> with 100% confidential retained search.</span>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                            <span><strong>National Media PR Bureau</strong>: Times of India, Economic Times & TV news coverage coordination.</span>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                            <span><strong>GIndia Tech AI Architecture</strong>: Proprietary recruitment bots and custom enterprise software.</span>
+                        </li>
                     </ul>
-                    <a href="tel:+916202254762" class="city-hub-btn btn-royal" style="background:#0F172A;">
-                        Connect Delhi Hub (+91 6202254762) &rarr;
-                    </a>
+
+                    <div class="city-hub-actions">
+                        <a href="tel:+916202254762" class="city-hub-btn btn-hub-delhi">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                            Call Delhi Hub (+91 6202254762) &rarr;
+                        </a>
+                        <a href="https://wa.me/916202254762?text=Hello%20Delhi%20Corporate%20Desk,%20I%20want%20to%20discuss%20CXO%20Search%20or%20Corporate%20Hiring." target="_blank" class="city-hub-secondary">
+                            💬 WhatsApp Delhi Corporate Desk
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Hub 3: Faridabad -->
-                <div class="city-hub-card" style="border-top:4px solid var(--emerald); position:relative;">
-                    <span class="city-hub-badge badge-faridabad" style="background:#D1FAE5; color:#065F46; font-weight:800;">🏭 Industrial & Bulk Staffing</span>
-                    <h3 class="city-hub-title" style="font-family:'Outfit',sans-serif; font-size:22px; margin-top:8px;">Bhopani, Greater Faridabad</h3>
-                    <p class="city-hub-subtitle">Manufacturing Plant Staffing, Warehousing Logistics & Factory Workforce Deployment</p>
-                    <div class="city-hub-address" style="background:#F8FAFC; padding:10px 14px; border-radius:8px; margin-bottom:14px;">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="color:var(--emerald);flex-shrink:0;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                        <span><strong>Bhopani</strong>, Greater Faridabad, Haryana — 121002</span>
+                <div class="city-hub-card hub-faridabad">
+                    <div class="city-hub-topbar">
+                        <span class="city-hub-badge badge-faridabad">🏭 Industrial & Bulk Mobilization</span>
+                        <span class="city-status-pulse">Active Factory Desk</span>
                     </div>
+                    <h3 class="city-hub-title">Bhopani, Greater Faridabad</h3>
+                    <p class="city-hub-subtitle">Manufacturing Plant Staffing, Warehousing Logistics & Factory Workforce Deployment</p>
+                    
+                    <div class="city-tags-strip">
+                        <span class="city-tag">48-Hr Mobilization</span>
+                        <span class="city-tag">100% PF & ESIC Compliant</span>
+                        <span class="city-tag">Plant Supervisors</span>
+                    </div>
+
+                    <div class="city-hub-address">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#059669"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        <div>
+                            <strong>Bhopani Industrial Corridor</strong><br>
+                            Greater Faridabad, Haryana — 121002
+                        </div>
+                    </div>
+
                     <ul class="city-hub-features">
-                        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Rapid 48-Hour Industrial Bulk Mobilization</li>
-                        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> On-Site Workforce Management & Shift Control</li>
-                        <li><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> 100% PF, ESIC & Factory Act Labor Compliance</li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                            <span><strong>Rapid 48-Hour Industrial Bulk Mobilization</strong> of up to 500+ operators, fitters, loaders & techs.</span>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                            <span><strong>Dedicated On-Site Workforce Managers</strong> and shift supervisors for round-the-clock plant uptime.</span>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                            <span><strong>100% Statutory Labor Law Compliance</strong>: PF, ESIC, Bonus, Gratuity & Factory Act auditing.</span>
+                        </li>
                     </ul>
-                    <a href="tel:+916202254762" class="city-hub-btn btn-royal" style="background:var(--emerald);">
-                        Connect Faridabad Hub (+91 6202254762) &rarr;
-                    </a>
+
+                    <div class="city-hub-actions">
+                        <a href="tel:+916202254762" class="city-hub-btn btn-hub-faridabad">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                            Call Faridabad Hub (+91 6202254762) &rarr;
+                        </a>
+                        <a href="https://wa.me/916202254762?text=Hello%20Faridabad%20Hub,%20I%20need%20bulk%20factory/industrial%20manpower%20deployment." target="_blank" class="city-hub-secondary">
+                            💬 WhatsApp Faridabad Hub
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
