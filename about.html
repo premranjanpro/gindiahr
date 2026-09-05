@@ -641,46 +641,501 @@
             line-height: 1.6;
         }
 
-        /* 3 HUBS CALLOUT BANNER */
-        .hubs-banner {
-            background: linear-gradient(135deg, #0B132B, #1C2541);
-            border-radius: var(--radius-xl);
-            padding: 40px;
-            color: #ffffff;
+        /* 3 HUBS — PREMIUM SECTION */
+        .hubs-section-bg {
+            background: linear-gradient(160deg, #0B132B 0%, #1a2845 60%, #0f1f3d 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hubs-section-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 30% 0%, rgba(21,101,192,0.18) 0%, transparent 60%),
+                        radial-gradient(ellipse at 80% 100%, rgba(56,189,248,0.10) 0%, transparent 55%);
+            pointer-events: none;
+        }
+
+        .hubs-section-bg .section-pill {
+            color: #38BDF8;
+        }
+
+        .hubs-section-bg .section-title {
+            color: #FFFFFF;
+        }
+
+        .hubs-section-bg .section-desc {
+            color: #94A3B8;
+        }
+
+        /* Hub connector bar */
+        .hubs-connector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            margin-bottom: 40px;
+        }
+
+        .hub-connector-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent-orange);
+            box-shadow: 0 0 0 4px rgba(245,158,11,0.25);
+            flex-shrink: 0;
+        }
+
+        .hub-connector-line {
+            flex: 1;
+            height: 2px;
+            max-width: 120px;
+            background: linear-gradient(90deg, rgba(245,158,11,0.6), rgba(56,189,248,0.6));
+        }
+
+        /* Hub Cards Grid */
+        .hubs-cards-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 24px;
-            border: 1px solid rgba(255,255,255,0.1);
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            position: relative;
+            z-index: 1;
         }
 
-        .hub-box {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+        .hub-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.10);
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+            position: relative;
+        }
+
+        .hub-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 28px 60px rgba(0,0,0,0.45);
+            border-color: rgba(56,189,248,0.35);
+        }
+
+        /* Coloured top accent strip */
+        .hub-card-accent {
+            height: 5px;
+            width: 100%;
+        }
+        .hub-card:nth-child(1) .hub-card-accent { background: linear-gradient(90deg, #F59E0B, #D97706); }
+        .hub-card:nth-child(2) .hub-card-accent { background: linear-gradient(90deg, #1565C0, #38BDF8); }
+        .hub-card:nth-child(3) .hub-card-accent { background: linear-gradient(90deg, #10B981, #0284C7); }
+
+        .hub-card-inner {
+            padding: 28px 26px 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Status pill */
+        .hub-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: rgba(16,185,129,0.12);
+            border: 1px solid rgba(16,185,129,0.30);
+            border-radius: 30px;
+            padding: 4px 12px;
+            font-size: 11.5px;
+            font-weight: 800;
+            color: #34D399;
+            width: fit-content;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .hub-status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #10B981;
+            animation: pulse-dot 1.8s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%,100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.6; }
+        }
+
+        /* Hub icon + role label */
+        .hub-header-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+
+        .hub-icon-wrap {
+            width: 52px;
+            height: 52px;
             border-radius: 14px;
-            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+        .hub-card:nth-child(1) .hub-icon-wrap { background: rgba(245,158,11,0.15); color: #F59E0B; }
+        .hub-card:nth-child(2) .hub-icon-wrap { background: rgba(21,101,192,0.18); color: #38BDF8; }
+        .hub-card:nth-child(3) .hub-icon-wrap { background: rgba(16,185,129,0.15); color: #10B981; }
+
+        .hub-role-label {
+            flex: 1;
         }
 
-        .hub-tag {
+        .hub-role-type {
             font-size: 11px;
             font-weight: 800;
-            color: #38BDF8;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 6px;
+            letter-spacing: 1.2px;
+            margin-bottom: 4px;
         }
+        .hub-card:nth-child(1) .hub-role-type { color: #F59E0B; }
+        .hub-card:nth-child(2) .hub-role-type { color: #38BDF8; }
+        .hub-card:nth-child(3) .hub-role-type { color: #10B981; }
 
-        .hub-title {
+        .hub-card-title {
             font-family: var(--font-heading);
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 800;
             color: #FFFFFF;
+            line-height: 1.25;
+        }
+
+        /* Sub-label row */
+        .hub-sublabel {
+            font-size: 12px;
+            color: #64748B;
+            margin-bottom: 14px;
+            font-weight: 600;
+        }
+
+        /* Divider */
+        .hub-divider {
+            height: 1px;
+            background: rgba(255,255,255,0.08);
+            margin: 0 0 18px;
+        }
+
+        /* Stats badges */
+        .hub-stats-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+
+        .hub-stat-badge {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.10);
+            border-radius: 8px;
+            padding: 5px 11px;
+            font-size: 11.5px;
+            font-weight: 700;
+            color: #CBD5E1;
+            white-space: nowrap;
+        }
+
+        /* Feature list */
+        .hub-features {
+            list-style: none;
+            margin: 0 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex: 1;
+        }
+
+        .hub-features li {
+            font-size: 13.5px;
+            color: #94A3B8;
+            line-height: 1.5;
+            display: flex;
+            align-items: flex-start;
+            gap: 9px;
+        }
+
+        .hub-features li::before {
+            content: '▹';
+            color: #38BDF8;
+            font-size: 14px;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* Address block */
+        .hub-address {
+            background: rgba(0,0,0,0.25);
+            border-radius: 10px;
+            padding: 11px 14px;
+            font-size: 12px;
+            color: #64748B;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .hub-address i {
+            color: #38BDF8;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        /* CTA buttons */
+        .hub-cta-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .hub-btn-call {
+            flex: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            padding: 11px 14px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--primary), #0284C7);
+            color: #FFFFFF;
+            font-size: 13px;
+            font-weight: 700;
+            transition: all 0.25s;
+            text-decoration: none;
+        }
+
+        .hub-btn-call:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(21,101,192,0.40);
+            color: #fff;
+        }
+
+        .hub-btn-wa {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            padding: 11px 16px;
+            border-radius: 10px;
+            background: #25D366;
+            color: #FFFFFF;
+            font-size: 13px;
+            font-weight: 700;
+            transition: all 0.25s;
+            text-decoration: none;
+        }
+
+        .hub-btn-wa:hover {
+            background: #1dbd5a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37,211,102,0.35);
+            color: #fff;
+        }
+
+        @media (max-width: 1100px) {
+            .hubs-cards-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 700px) {
+            .hubs-cards-grid { grid-template-columns: 1fr; }
+            .hub-cta-row { flex-direction: column; }
+        }
+
+        /* ===== PR AGENCY PROCESS SECTION ===== */
+        .pr-section-bg {
+            background: #F8FAFC;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .pr-headline-wrap {
+            max-width: 800px;
+            margin: 0 auto 56px;
+            text-align: center;
+        }
+
+        .pr-guarantee-strip {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 22px;
+        }
+
+        .pr-guarantee-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: #fff;
+            border: 1.5px solid #BAE6FD;
+            border-radius: 30px;
+            padding: 6px 16px;
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .pr-guarantee-chip i {
+            color: var(--accent-orange);
+        }
+
+        /* Steps grid */
+        .pr-steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 26px;
+        }
+
+        .pr-step-card {
+            background: #ffffff;
+            border: 1.5px solid var(--border-color);
+            border-radius: 18px;
+            padding: 30px 26px 26px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.32s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pr-step-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), #38BDF8);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.35s ease;
+        }
+
+        .pr-step-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .pr-step-card:hover {
+            transform: translateY(-6px);
+            border-color: #BAE6FD;
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Step number badge */
+        .pr-step-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary), #0284C7);
+            color: #fff;
+            font-family: var(--font-heading);
+            font-size: 17px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            margin-bottom: 18px;
+            flex-shrink: 0;
+            box-shadow: 0 6px 18px rgba(21,101,192,0.30);
+        }
+
+        /* Icon row */
+        .pr-step-icon-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+
+        .pr-step-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 19px;
+            flex-shrink: 0;
+        }
+
+        /* Per-card icon colours */
+        .pr-step-card:nth-child(1) .pr-step-icon { background: #FEF3C7; color: #D97706; }
+        .pr-step-card:nth-child(2) .pr-step-icon { background: #DBEAFE; color: #1565C0; }
+        .pr-step-card:nth-child(3) .pr-step-icon { background: #D1FAE5; color: #059669; }
+        .pr-step-card:nth-child(4) .pr-step-icon { background: #EDE9FE; color: #7C3AED; }
+        .pr-step-card:nth-child(5) .pr-step-icon { background: #FEE2E2; color: #DC2626; }
+        .pr-step-card:nth-child(6) .pr-step-icon { background: #ECFDF5; color: #0284C7; }
+
+        .pr-step-title {
+            font-family: var(--font-heading);
+            font-size: 17px;
+            font-weight: 800;
+            color: var(--navy-900);
+            line-height: 1.25;
+        }
+
+        .pr-step-desc {
+            font-size: 13.5px;
+            color: #475569;
+            line-height: 1.65;
+            flex: 1;
+            margin-top: 6px;
+        }
+
+        /* Bottom CTA bar */
+        .pr-cta-bar {
+            margin-top: 52px;
+            background: linear-gradient(135deg, #0B132B, #1565C0);
+            border-radius: 18px;
+            padding: 38px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 28px;
+            flex-wrap: wrap;
+            box-shadow: 0 16px 50px rgba(11,19,43,0.30);
+        }
+
+        .pr-cta-text h4 {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 900;
+            color: #fff;
             margin-bottom: 6px;
         }
 
-        .hub-desc {
-            font-size: 13px;
+        .pr-cta-text p {
+            font-size: 14.5px;
             color: #94A3B8;
-            line-height: 1.5;
+        }
+
+        .pr-cta-buttons {
+            display: flex;
+            gap: 12px;
+            flex-shrink: 0;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 960px) {
+            .pr-steps-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 600px) {
+            .pr-steps-grid { grid-template-columns: 1fr; }
+            .pr-cta-bar { text-align: center; justify-content: center; }
         }
 
         /* DIRECT CONNECT CARD */
@@ -889,41 +1344,294 @@
     </section>
 
     <!-- SECTION 3: 3 STRATEGIC HUBS GOVERNED BY USHA SINGH -->
-    <section class="section section-alt">
-        <div class="section-container">
+    <section class="section hubs-section-bg" style="padding:80px 24px;">
+        <div class="section-container" style="position:relative;z-index:1;">
             <div class="section-header">
                 <span class="section-pill">Pan-India Leadership</span>
-                <h2 class="section-title">3 Key Operating Hubs Governed by Usha Singh</h2>
+                <h2 class="section-title">3 Key Operating Hubs Across India</h2>
                 <p class="section-desc">
-                    Strategically connecting North and Eastern India's business corridors through specialized regional command centers.
+                    Led by <strong style="color:#fff;">Usha Singh</strong>, GIndiaHR operates 3 dedicated regional command centers connecting Northern &amp; Eastern India's talent networks, executive recruitment, and industrial workforce pipelines.
                 </p>
             </div>
 
-            <div class="hubs-banner">
-                <div class="hub-box">
-                    <div class="hub-tag">📍 Flagship Headquarters</div>
-                    <h4 class="hub-title">Kankarbagh, Patna (Bihar)</h4>
-                    <p class="hub-desc">
-                        Statewide talent recruitment command center, executive search, Washxpress franchise setup management, and Eastern India media PR desk.
-                    </p>
+            <!-- Connector visual -->
+            <div class="hubs-connector">
+                <div class="hub-connector-dot"></div>
+                <div class="hub-connector-line"></div>
+                <div class="hub-connector-dot" style="background:#38BDF8; box-shadow:0 0 0 4px rgba(56,189,248,0.2);"></div>
+                <div class="hub-connector-line"></div>
+                <div class="hub-connector-dot" style="background:#10B981; box-shadow:0 0 0 4px rgba(16,185,129,0.2);"></div>
+            </div>
+
+            <div class="hubs-cards-grid">
+
+                <!-- ===== HUB 1: PATNA HQ ===== -->
+                <div class="hub-card">
+                    <div class="hub-card-accent"></div>
+                    <div class="hub-card-inner">
+                        <div class="hub-status">
+                            <span class="hub-status-dot"></span>
+                            Active Regional HQ
+                        </div>
+
+                        <div class="hub-header-row">
+                            <div class="hub-icon-wrap">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div class="hub-role-label">
+                                <div class="hub-role-type">📍 Flagship HQ &amp; East Command</div>
+                                <h3 class="hub-card-title">Kankarbagh, Patna<br><span style="font-size:16px;color:#94A3B8;font-weight:600;">(Bihar)</span></h3>
+                            </div>
+                        </div>
+
+                        <p class="hub-sublabel">Bihar Central Operations, Statewide Manpower Deployment, Washxpress Franchise HQ &amp; Media PR</p>
+
+                        <div class="hub-stats-row">
+                            <span class="hub-stat-badge">2 Lakh+ Talent Pool</span>
+                            <span class="hub-stat-badge">Washxpress Store Setup</span>
+                            <span class="hub-stat-badge">PR Advisory</span>
+                        </div>
+
+                        <div class="hub-divider"></div>
+
+                        <ul class="hub-features">
+                            <li>2 Lakh+ Verified Bihar Talent Pool across all 38 districts with 48-hr recruitment turnaround.</li>
+                            <li>Washxpress Turnkey Franchise Hub: Architectural layout, LG machinery, and live staff training.</li>
+                            <li>Regional Media &amp; PR Relations: Dainik Jagran, Prabhat Khabar &amp; digital brand defense.</li>
+                        </ul>
+
+                        <div class="hub-address">
+                            <i class="fa-solid fa-map-pin"></i>
+                            <span>Kankarbagh Main Road, Patna, Bihar — 800020</span>
+                        </div>
+
+                        <div class="hub-cta-row">
+                            <a href="tel:+916202254762" class="hub-btn-call">
+                                <i class="fa-solid fa-phone"></i> Call Patna HQ
+                            </a>
+                            <a href="https://wa.me/916202254762?text=Hello%20Patna%20HQ,%20I%20want%20to%20consult%20regarding%20HR%20Services%20or%20Washxpress%20Franchise." target="_blank" class="hub-btn-wa">
+                                <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="hub-box">
-                    <div class="hub-tag">🏛️ Corporate & CXO Hub</div>
-                    <h4 class="hub-title">Malviya Nagar, New Delhi</h4>
-                    <p class="hub-desc">
-                        Tier-1 executive hiring, CXO confidential searches, enterprise tech consulting, and national media placement relations.
-                    </p>
+                <!-- ===== HUB 2: DELHI CORPORATE ===== -->
+                <div class="hub-card">
+                    <div class="hub-card-accent"></div>
+                    <div class="hub-card-inner">
+                        <div class="hub-status">
+                            <span class="hub-status-dot"></span>
+                            Active Delhi Desk
+                        </div>
+
+                        <div class="hub-header-row">
+                            <div class="hub-icon-wrap">
+                                <i class="fa-solid fa-landmark"></i>
+                            </div>
+                            <div class="hub-role-label">
+                                <div class="hub-role-type">🏛️ Corporate &amp; CXO Executive Desk</div>
+                                <h3 class="hub-card-title">Malviya Nagar,<br>New Delhi</h3>
+                            </div>
+                        </div>
+
+                        <p class="hub-sublabel">National CXO Executive Search, Tech Talent Headhunting &amp; Enterprise AI Consulting</p>
+
+                        <div class="hub-stats-row">
+                            <span class="hub-stat-badge">CXO &amp; Leadership Search</span>
+                            <span class="hub-stat-badge">300+ Enterprise Clients</span>
+                            <span class="hub-stat-badge">Tech Consulting</span>
+                        </div>
+
+                        <div class="hub-divider"></div>
+
+                        <ul class="hub-features">
+                            <li>C-Suite, VP, Director &amp; CXO Executive Placements with 100% confidential retained search.</li>
+                            <li>National Media PR Bureau: Times of India, Economic Times &amp; TV news coverage coordination.</li>
+                            <li>GIndia Tech AI Architecture: Proprietary recruitment bots and custom enterprise software.</li>
+                        </ul>
+
+                        <div class="hub-address">
+                            <i class="fa-solid fa-map-pin"></i>
+                            <span>Malviya Nagar Main Commercial, South Delhi, New Delhi — 110017</span>
+                        </div>
+
+                        <div class="hub-cta-row">
+                            <a href="tel:+916202254762" class="hub-btn-call">
+                                <i class="fa-solid fa-phone"></i> Call Delhi Hub
+                            </a>
+                            <a href="https://wa.me/916202254762?text=Hello%20Delhi%20Corporate%20Desk,%20I%20want%20to%20discuss%20CXO%20Search%20or%20Corporate%20Hiring." target="_blank" class="hub-btn-wa">
+                                <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="hub-box">
-                    <div class="hub-tag">🏭 Industrial & Bulk Staffing</div>
-                    <h4 class="hub-title">Bhopani, Greater Faridabad</h4>
-                    <p class="hub-desc">
-                        Manufacturing, factory workforce deployment, warehousing logistics staffing, and 100% statutory labor compliance management.
-                    </p>
+                <!-- ===== HUB 3: FARIDABAD INDUSTRIAL ===== -->
+                <div class="hub-card">
+                    <div class="hub-card-accent"></div>
+                    <div class="hub-card-inner">
+                        <div class="hub-status">
+                            <span class="hub-status-dot"></span>
+                            Active Factory Desk
+                        </div>
+
+                        <div class="hub-header-row">
+                            <div class="hub-icon-wrap">
+                                <i class="fa-solid fa-industry"></i>
+                            </div>
+                            <div class="hub-role-label">
+                                <div class="hub-role-type">🏭 Industrial &amp; Bulk Mobilization</div>
+                                <h3 class="hub-card-title">Bhopani,<br>Greater Faridabad</h3>
+                            </div>
+                        </div>
+
+                        <p class="hub-sublabel">Manufacturing Plant Staffing, Warehousing Logistics &amp; Factory Workforce Deployment</p>
+
+                        <div class="hub-stats-row">
+                            <span class="hub-stat-badge">48-Hr Mobilization</span>
+                            <span class="hub-stat-badge">100% PF &amp; ESIC Compliant</span>
+                            <span class="hub-stat-badge">Plant Supervisors</span>
+                        </div>
+
+                        <div class="hub-divider"></div>
+
+                        <ul class="hub-features">
+                            <li>Bulk contract labor, machine operators &amp; warehouse staff deployed within 48 hours SLA.</li>
+                            <li>Full PF, ESIC, Factory Act, and minimum wages compliance for zero statutory liability.</li>
+                            <li>Dedicated industrial corridor coverage: Faridabad, Gurgaon, Manesar &amp; Bhiwadi plants.</li>
+                        </ul>
+
+                        <div class="hub-address">
+                            <i class="fa-solid fa-map-pin"></i>
+                            <span>Bhopani Industrial Corridor, Greater Faridabad, Haryana</span>
+                        </div>
+
+                        <div class="hub-cta-row">
+                            <a href="tel:+916202254762" class="hub-btn-call">
+                                <i class="fa-solid fa-phone"></i> Call Factory Desk
+                            </a>
+                            <a href="https://wa.me/916202254762?text=Hello%20Faridabad%20Industrial%20Desk,%20I%20need%20bulk%20manpower%20or%20factory%20staffing." target="_blank" class="hub-btn-wa">
+                                <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /hubs-cards-grid -->
+        </div>
+    </section>
+
+    <!-- PR AGENCY PROCESS SECTION -->
+    <section class="section pr-section-bg">
+        <div class="section-container">
+
+            <div class="pr-headline-wrap">
+                <span class="section-pill">GIndia PR Agency</span>
+                <h2 class="section-title">How We Build &amp; Scale Your Brand</h2>
+                <p class="section-desc">
+                    Guaranteed media exposure, authoritative credibility, and search engine dominance for startups, enterprises, and visionary leaders across Patna, Bihar &amp; Delhi NCR.
+                </p>
+                <div class="pr-guarantee-strip">
+                    <span class="pr-guarantee-chip"><i class="fa-solid fa-check-circle"></i> Guaranteed Media Placements</span>
+                    <span class="pr-guarantee-chip"><i class="fa-solid fa-check-circle"></i> Google #1 Rank Strategy</span>
+                    <span class="pr-guarantee-chip"><i class="fa-solid fa-check-circle"></i> 24/7 Reputation Defense</span>
+                    <span class="pr-guarantee-chip"><i class="fa-solid fa-check-circle"></i> Bihar &amp; Delhi NCR Coverage</span>
                 </div>
             </div>
+
+            <div class="pr-steps-grid">
+
+                <!-- Step 01 -->
+                <div class="pr-step-card">
+                    <div class="pr-step-num">01</div>
+                    <div class="pr-step-icon-row">
+                        <div class="pr-step-icon"><i class="fa-solid fa-pen-nib"></i></div>
+                        <h3 class="pr-step-title">Brand Story &amp; Positioning</h3>
+                    </div>
+                    <p class="pr-step-desc">
+                        We extract your unique value proposition, craft newsworthy story angles, and build a compelling brand narrative that captures journalists' attention.
+                    </p>
+                </div>
+
+                <!-- Step 02 -->
+                <div class="pr-step-card">
+                    <div class="pr-step-num">02</div>
+                    <div class="pr-step-icon-row">
+                        <div class="pr-step-icon"><i class="fa-solid fa-newspaper"></i></div>
+                        <h3 class="pr-step-title">National &amp; Regional Media Blitz</h3>
+                    </div>
+                    <p class="pr-step-desc">
+                        Direct placement across Dainik Jagran, Hindustan, Times of India, Economic Times, Mint, and regional news portals in Bihar and NCR.
+                    </p>
+                </div>
+
+                <!-- Step 03 -->
+                <div class="pr-step-card">
+                    <div class="pr-step-num">03</div>
+                    <div class="pr-step-icon-row">
+                        <div class="pr-step-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                        <h3 class="pr-step-title">Digital PR &amp; Top Google Rank</h3>
+                    </div>
+                    <p class="pr-step-desc">
+                        High-authority editorial backlinks and Google News indexing that push your brand to the #1 rank for high-intent industry search queries.
+                    </p>
+                </div>
+
+                <!-- Step 04 -->
+                <div class="pr-step-card">
+                    <div class="pr-step-num">04</div>
+                    <div class="pr-step-icon-row">
+                        <div class="pr-step-icon"><i class="fa-solid fa-user-tie"></i></div>
+                        <h3 class="pr-step-title">Founder &amp; Executive Profiling</h3>
+                    </div>
+                    <p class="pr-step-desc">
+                        We position founders and CEOs as industry thought leaders with published op-eds, podcast guesting, panel discussions, and awards.
+                    </p>
+                </div>
+
+                <!-- Step 05 -->
+                <div class="pr-step-card">
+                    <div class="pr-step-num">05</div>
+                    <div class="pr-step-icon-row">
+                        <div class="pr-step-icon"><i class="fa-solid fa-star"></i></div>
+                        <h3 class="pr-step-title">Creator &amp; Influencer PR</h3>
+                    </div>
+                    <p class="pr-step-desc">
+                        High-converting partnerships with regional YouTubers, Instagram influencers, and digital voices that drive viral local reach and user trust.
+                    </p>
+                </div>
+
+                <!-- Step 06 -->
+                <div class="pr-step-card">
+                    <div class="pr-step-num">06</div>
+                    <div class="pr-step-icon-row">
+                        <div class="pr-step-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h3 class="pr-step-title">Reputation Defense &amp; Crisis PR</h3>
+                    </div>
+                    <p class="pr-step-desc">
+                        Proactive search result defense, 24/7 brand sentiment monitoring, review suppression, and strategic crisis management communications.
+                    </p>
+                </div>
+
+            </div><!-- /pr-steps-grid -->
+
+            <!-- Bottom CTA bar -->
+            <div class="pr-cta-bar">
+                <div class="pr-cta-text">
+                    <h4>Ready to Dominate Your Market?</h4>
+                    <p>Talk to GIndia PR Agency today — results-driven brand building for Bihar &amp; NCR leaders.</p>
+                </div>
+                <div class="pr-cta-buttons">
+                    <a href="tel:+916202254762" class="btn btn-primary" style="padding:13px 26px; font-size:15px;">
+                        <i class="fa-solid fa-phone"></i> Call PR Desk
+                    </a>
+                    <a href="https://wa.me/916202254762?text=Hello%20GIndia%20PR%20Agency,%20I%20want%20to%20discuss%20Brand%20Building%20and%20Media%20Coverage." target="_blank" class="btn btn-whatsapp" style="padding:13px 26px; font-size:15px;">
+                        <i class="fa-brands fa-whatsapp"></i> WhatsApp PR Team
+                    </a>
+                </div>
+            </div>
+
         </div>
     </section>
 
